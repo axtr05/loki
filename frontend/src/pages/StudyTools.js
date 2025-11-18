@@ -344,7 +344,25 @@ const StudyTools = () => {
                   <p className="text-lg text-gray-600">
                     You got {quizResults.filter(r => r).length} out of {activeQuiz.questions.length} correct
                   </p>
-                  <Button onClick={() => setActiveQuiz(null)}>Back to Quizzes</Button>
+                  {quizResults.filter(r => r).length === activeQuiz.questions.length && activeQuiz.creditsReward && (
+                    <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                      <p className="text-green-800 font-semibold">
+                        Perfect Score! You earned {activeQuiz.creditsReward} credits! 🎉
+                      </p>
+                    </div>
+                  )}
+                  {quizResults.filter(r => r).length < activeQuiz.questions.length && activeQuiz.requiredForCompletion && (
+                    <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-4">
+                      <p className="text-orange-800 font-semibold">
+                        You need to get all questions correct to earn credits. Try again!
+                      </p>
+                    </div>
+                  )}
+                  <Button onClick={() => {
+                    setActiveQuiz(null);
+                    setQuizResults([]);
+                    setCurrentQuestion(0);
+                  }}>Back to Quizzes</Button>
                 </div>
               )}
             </div>
