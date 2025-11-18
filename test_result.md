@@ -267,6 +267,22 @@ agent_communication:
       7. Credits system now properly accumulates
       
       Ready for backend and frontend testing.
+  - agent: "main"
+    message: |
+      Enhanced quiz experience based on user feedback:
+      1. ✅ Quiz now shows score as "7/10" format
+      2. ✅ Shows clear message when not 10/10: "You didn't get 10/10, no credits"
+      3. ✅ "Back to Book" button to redirect to PDF when quiz is incomplete
+      4. ✅ Perfect score (10/10) triggers celebration:
+         - Confetti animation (react-confetti)
+         - Trophy animation with glowing effects
+         - Animated credits display with pulse effect
+         - Gradient backgrounds and shine effects
+      5. ✅ Profile picture changed to book image instead of avatar
+      6. ✅ Added custom CSS animations for celebrations
+      7. ✅ Try Again button for retaking quiz
+      
+      All enhancements implemented and compiled successfully!
   - agent: "testing"
     message: |
       ✅ BACKEND TESTING COMPLETE - ALL TESTS PASSED
