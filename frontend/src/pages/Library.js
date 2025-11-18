@@ -10,6 +10,7 @@ import { Progress } from '../components/ui/progress';
 
 const Library = () => {
   const { ebooks, updateReadingProgress, user, purchaseBook } = useGame();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedBook, setSelectedBook] = useState(null);
