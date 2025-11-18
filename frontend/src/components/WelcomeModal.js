@@ -56,7 +56,7 @@ const WelcomeModal = ({ isOpen, onComplete }) => {
         ) : (
           <div className="space-y-6 py-6">
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">How LearnHub Works</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">How EduPulse Works</h2>
               <p className="text-gray-600">Earn credits, unlock books, and level up!</p>
             </div>
 
