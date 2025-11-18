@@ -67,16 +67,16 @@ const Profile = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
-          icon={Clock}
-          label="Study Time"
-          value={`${user.totalStudyTime}h`}
-          color="blue"
+          icon={Coins}
+          label="Credits"
+          value={user.credits || 0}
+          color="green"
         />
         <StatCard
           icon={BookOpen}
-          label="Books Read"
+          label="Books Completed"
           value={totalBooksRead}
-          color="green"
+          color="blue"
         />
         <StatCard
           icon={Trophy}
