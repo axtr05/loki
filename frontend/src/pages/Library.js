@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../components/
 import { Progress } from '../components/ui/progress';
 
 const Library = () => {
-  const { ebooks, updateReadingProgress } = useGame();
+  const { ebooks, updateReadingProgress, user, purchaseBook } = useGame();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedBook, setSelectedBook] = useState(null);
@@ -25,14 +25,38 @@ const Library = () => {
   });
 
   const handleReadBook = (book) => {
+    if (!book.isPurchased) return;
     setSelectedBook(book);
     setIsReading(true);
+  };
+
+  const handlePurchaseBook = (book) => {
+    if (!user) return;
+    
+    if (user.credits < book.price) {
+      alert(`Not enough credits! You need ${book.price} credits but only have ${user.credits} credits.`);
+      return;
+    }
+
+    const success = purchaseBook(book.id, book.price);
+    if (success) {
+      alert(`Successfully unlocked "${book.title}"! You can now read it.`);
+    }
   };
 
   const handleUpdateProgress = (progress) => {
     if (selectedBook) {
       updateReadingProgress(selectedBook.id, progress);
       setSelectedBook({ ...selectedBook, readProgress: progress });
+      
+      // Show completion message
+      if (progress === 100) {
+        const book = ebooks.find(b => b.id === selectedBook.id);
+        setTimeout(() => {
+          alert(`Congratulations! You completed "${book.title}" and earned ${book.creditsReward} credits!`);
+          setIsReading(false);
+        }, 500);
+      }
     }
   };
 
