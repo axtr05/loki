@@ -54,10 +54,25 @@ const Library = () => {
       // Show completion message
       if (progress === 100) {
         const book = ebooks.find(b => b.id === selectedBook.id);
-        setTimeout(() => {
-          alert(`Congratulations! You completed "${book.title}" and earned ${book.creditsReward} credits!`);
-          setIsReading(false);
-        }, 500);
+        setIsReading(false);
+        
+        // Check if book has a quiz requirement
+        if (book.hasQuiz && book.quizId) {
+          setTimeout(() => {
+            alert(`Congratulations! You completed "${book.title}"!\n\nNow take the quiz to earn your credits!`);
+            // Store quiz requirement in localStorage
+            localStorage.setItem('pendingQuiz', JSON.stringify({
+              bookId: book.id,
+              bookTitle: book.title,
+              quizId: book.quizId
+            }));
+            navigate('/study-tools', { state: { openQuiz: book.quizId } });
+          }, 500);
+        } else {
+          setTimeout(() => {
+            alert(`Congratulations! You completed "${book.title}" and earned ${book.creditsReward} credits!`);
+          }, 500);
+        }
       }
     }
   };
