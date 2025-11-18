@@ -12,6 +12,7 @@ import { mockFlashcards, mockQuizzes } from '../mock';
 
 const StudyTools = () => {
   const { awardXP, awardCredits } = useGame();
+  const location = useLocation();
 
   // Pomodoro Timer
   const [time, setTime] = useState(25 * 60); // 25 minutes in seconds
@@ -37,7 +38,15 @@ const StudyTools = () => {
     const savedQuizzes = storage.get('quizzes:all') || mockQuizzes;
     setFlashcards(savedCards);
     setQuizzes(savedQuizzes);
-  }, []);
+    
+    // Check if we should auto-open a quiz
+    if (location.state?.openQuiz) {
+      const quizToOpen = savedQuizzes.find(q => q.id === location.state.openQuiz);
+      if (quizToOpen) {
+        setActiveQuiz(quizToOpen);
+      }
+    }
+  }, [location]);
 
   // Pomodoro Timer Effect
   useEffect(() => {
