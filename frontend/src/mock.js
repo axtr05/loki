@@ -188,5 +188,77 @@ export const mockQuizzes = [
     category: 'Programming',
     xpReward: 75,
     creditsReward: 15
+  },
+  {
+    id: 'quiz_cpp_complete',
+    title: 'C++ Programming Complete Quiz',
+    bookId: 'book_cpp',
+    description: 'Complete this quiz after finishing the C++ workbook to earn credits!',
+    questions: [
+      {
+        id: 'q1',
+        question: 'What is the order of evaluation in C++ expressions determined by?',
+        options: ['Compiler optimization', 'Operator precedence and associativity', 'Variable type', 'Random order'],
+        correct: 1
+      },
+      {
+        id: 'q2',
+        question: 'Which loop guarantees at least one execution?',
+        options: ['while loop', 'for loop', 'do-while loop', 'None of the above'],
+        correct: 2
+      },
+      {
+        id: 'q3',
+        question: 'What happens when you access an array element out of bounds in C++?',
+        options: ['Compilation error', 'Runtime exception', 'Undefined behavior (garbage value or crash)', 'Returns null'],
+        correct: 2
+      },
+      {
+        id: 'q4',
+        question: 'What is the purpose of the "break" statement in a loop?',
+        options: ['Skip current iteration', 'Exit the loop immediately', 'Pause the loop', 'Restart the loop'],
+        correct: 1
+      },
+      {
+        id: 'q5',
+        question: 'In recursion, what is essential to prevent infinite recursion?',
+        options: ['A while loop', 'A base case', 'Multiple function calls', 'Static variables'],
+        correct: 1
+      },
+      {
+        id: 'q6',
+        question: 'What is the time complexity of Bubble Sort in the worst case?',
+        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'],
+        correct: 2
+      },
+      {
+        id: 'q7',
+        question: 'What is the main advantage of Binary Search over Linear Search?',
+        options: ['Works on unsorted arrays', 'Faster time complexity O(log n)', 'Easier to implement', 'Uses less memory'],
+        correct: 1
+      },
+      {
+        id: 'q8',
+        question: 'What is the scope of a static local variable in a function?',
+        options: ['Global scope', 'Limited to the function but retains value across calls', 'Limited to a single function call', 'No scope'],
+        correct: 1
+      },
+      {
+        id: 'q9',
+        question: 'When passing an array to a function in C++, it is passed by:',
+        options: ['Value', 'Reference (pointer to first element)', 'Copy', 'Register'],
+        correct: 1
+      },
+      {
+        id: 'q10',
+        question: 'What is the correct way to declare a 2D array of integers with 3 rows and 4 columns?',
+        options: ['int arr[4][3];', 'int arr[3][4];', 'int[3,4] arr;', 'array<int, 3, 4> arr;'],
+        correct: 1
+      }
+    ],
+    category: 'Programming',
+    xpReward: 150,
+    creditsReward: 200,
+    requiredForCompletion: true
   }
 ];
