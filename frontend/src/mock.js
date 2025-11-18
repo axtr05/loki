@@ -22,14 +22,17 @@ export const mockEbooks = [
     author: 'Programming Experts',
     category: 'Programming',
     cover: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400',
-    description: 'Master C++ from basics to advanced concepts including OOP, STL, and modern C++ features',
+    description: 'Master C++ from basics to advanced concepts including operators, loops, functions, arrays, recursion, sorting algorithms, and more',
     pages: 450,
     readProgress: 0,
     lastRead: null,
     tags: ['c++', 'programming', 'oop'],
     price: 0, // Free book
     isPurchased: true,
-    creditsReward: 150 // Credits earned on completion
+    creditsReward: 0, // No credits for just reading - must complete quiz
+    pdfUrl: 'cpp_workbook.pdf',
+    hasQuiz: true,
+    quizId: 'quiz_cpp_complete'
   },
   {
     id: 'book_python',
