@@ -110,7 +110,11 @@ const Profile = () => {
               <span className="font-bold text-gray-900">{booksInProgress}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-600">Total Library</span>
+              <span className="text-gray-600">Books Unlocked</span>
+              <span className="font-bold text-gray-900">{ebooks.filter(b => b.isPurchased).length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600">Total Available</span>
               <span className="font-bold text-gray-900">{ebooks.length}</span>
             </div>
           </div>
@@ -134,6 +138,10 @@ const Profile = () => {
             <div className="flex justify-between items-center">
               <span className="text-gray-600">Total XP Earned</span>
               <span className="font-bold text-gray-900">{user.xp}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600">Credits Balance</span>
+              <span className="font-bold text-green-600">{user.credits || 0}</span>
             </div>
           </div>
         </div>
