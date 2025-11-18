@@ -10,7 +10,7 @@ import { storage } from '../utils/storage';
 import { mockFlashcards, mockQuizzes } from '../mock';
 
 const StudyTools = () => {
-  const { awardXP } = useGame();
+  const { awardXP, awardCredits } = useGame();
 
   // Pomodoro Timer
   const [time, setTime] = useState(25 * 60); // 25 minutes in seconds
