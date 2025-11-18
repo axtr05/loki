@@ -121,6 +121,9 @@ const StudyTools = () => {
         
         // Award credits if 100% correct
         if (percentage === 100 && activeQuiz.creditsReward) {
+          setShowConfetti(true);
+          setTimeout(() => setShowConfetti(false), 5000);
+          
           awardCredits(activeQuiz.creditsReward);
           
           // Clear pending quiz if this was from book completion
@@ -129,9 +132,6 @@ const StudyTools = () => {
             const quizData = JSON.parse(pendingQuiz);
             if (quizData.quizId === activeQuiz.id) {
               localStorage.removeItem('pendingQuiz');
-              setTimeout(() => {
-                alert(`Perfect score! You earned ${activeQuiz.creditsReward} credits for completing "${quizData.bookTitle}"!`);
-              }, 100);
             }
           }
         }
