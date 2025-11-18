@@ -114,7 +114,9 @@ const StudyTools = () => {
         setCurrentQuestion(currentQuestion + 1);
         setSelectedAnswer(null);
       } else {
-        // Quiz completed
+        // Quiz completed - set completion state
+        setQuizCompleted(true);
+        
         const correctCount = quizResults.filter(r => r).length + (isCorrect ? 1 : 0);
         const percentage = (correctCount / activeQuiz.questions.length) * 100;
         if (percentage >= 70) {
