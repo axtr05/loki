@@ -98,6 +98,14 @@ async def ai_chat(request: AIChatRequest):
         logger.error(f"AI chat error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+# PDF endpoint
+@api_router.get("/pdfs/{filename}")
+async def get_pdf(filename: str):
+    pdf_path = ROOT_DIR / "static" / "pdfs" / filename
+    if not pdf_path.exists():
+        raise HTTPException(status_code=404, detail="PDF not found")
+    return FileResponse(pdf_path, media_type="application/pdf")
+
 # Include the router in the main app
 app.include_router(api_router)
 
