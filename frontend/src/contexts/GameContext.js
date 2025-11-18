@@ -111,6 +111,40 @@ export const GameProvider = ({ children }) => {
     return updatedUser;
   };
 
+  // Award credits
+  const awardCredits = (amount) => {
+    if (!user) return;
+
+    const updatedUser = {
+      ...user,
+      credits: (user.credits || 0) + amount
+    };
+
+    setUser(updatedUser);
+    storage.set(STORAGE_KEYS.USER_PROFILE, updatedUser);
+    return updatedUser;
+  };
+
+  // Purchase book with credits
+  const purchaseBook = (bookId, price) => {
+    if (!user || user.credits < price) return false;
+
+    const updatedUser = {
+      ...user,
+      credits: user.credits - price
+    };
+
+    const updatedEbooks = ebooks.map(book =>
+      book.id === bookId ? { ...book, isPurchased: true } : book
+    );
+
+    setUser(updatedUser);
+    setEbooks(updatedEbooks);
+    storage.set(STORAGE_KEYS.USER_PROFILE, updatedUser);
+    storage.set(STORAGE_KEYS.EBOOKS_LIBRARY, updatedEbooks);
+    return true;
+  };
+
   // Unlock achievement
   const unlockAchievement = (achievementId) => {
     const achievement = achievements.find(a => a.id === achievementId);
