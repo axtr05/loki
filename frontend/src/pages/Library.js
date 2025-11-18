@@ -268,6 +268,7 @@ const Library = () => {
                     </div>
                   </div>
                 )}
+              </div>
 
               {/* Book Info */}
               <div className="border-t pt-4">
