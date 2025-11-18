@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { GameProvider } from "./contexts/GameContext";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { GameProvider, useGame } from "./contexts/GameContext";
 import Sidebar from "./components/Sidebar";
+import WelcomeModal from "./components/WelcomeModal";
 import Dashboard from "./pages/Dashboard";
 import Library from "./pages/Library";
 import AIAssistant from "./pages/AIAssistant";
@@ -14,10 +15,14 @@ import Admin from "./pages/Admin";
 import Settings from "./pages/Settings";
 import { Toaster } from "./components/ui/toaster";
 
-function App() {
+const AppContent = () => {
+  const { showWelcome, completeWelcome, user } = useGame();
+
   return (
-    <GameProvider>
-      <BrowserRouter>
+    <>
+      <WelcomeModal isOpen={showWelcome} onComplete={completeWelcome} />
+      
+      {!showWelcome && (
         <div className="flex min-h-screen bg-gray-50">
           <Sidebar />
           <main className="flex-1 ml-64 p-8">
@@ -29,12 +34,26 @@ function App() {
               <Route path="/achievements" element={<Achievements />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/admin" element={<Admin />} />
               <Route path="/settings" element={<Settings />} />
+              {/* Admin route - restricted */}
+              <Route 
+                path="/admin" 
+                element={user?.isAdmin ? <Admin /> : <Navigate to="/" replace />} 
+              />
             </Routes>
           </main>
           <Toaster />
         </div>
+      )}
+    </>
+  );
+};
+
+function App() {
+  return (
+    <GameProvider>
+      <BrowserRouter>
+        <AppContent />
       </BrowserRouter>
     </GameProvider>
   );
