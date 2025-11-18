@@ -3,7 +3,7 @@ export const mockUser = {
   id: 'user_1',
   username: 'LearnMaster',
   email: 'user@example.com',
-  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LearnMaster',
+  avatar: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=400&fit=crop',
   level: 1,
   xp: 0,
   xpToNextLevel: 500,
