@@ -102,6 +102,7 @@ const StudyTools = () => {
     setCurrentQuestion(0);
     setSelectedAnswer(null);
     setQuizResults([]);
+    setQuizCompleted(false);
   };
 
   const handleAnswerSelect = (answerIndex) => {
