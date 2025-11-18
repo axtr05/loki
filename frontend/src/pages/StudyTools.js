@@ -105,6 +105,23 @@ const StudyTools = () => {
         if (percentage >= 70) {
           awardXP(activeQuiz.xpReward, 'quiz');
         }
+        
+        // Award credits if 100% correct
+        if (percentage === 100 && activeQuiz.creditsReward) {
+          awardCredits(activeQuiz.creditsReward);
+          
+          // Clear pending quiz if this was from book completion
+          const pendingQuiz = localStorage.getItem('pendingQuiz');
+          if (pendingQuiz) {
+            const quizData = JSON.parse(pendingQuiz);
+            if (quizData.quizId === activeQuiz.id) {
+              localStorage.removeItem('pendingQuiz');
+              setTimeout(() => {
+                alert(`Perfect score! You earned ${activeQuiz.creditsReward} credits for completing "${quizData.bookTitle}"!`);
+              }, 100);
+            }
+          }
+        }
       }
     }, 1500);
   };
