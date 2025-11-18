@@ -35,6 +35,7 @@ const StudyTools = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [quizResults, setQuizResults] = useState([]);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   useEffect(() => {
     // Load flashcards and quizzes
