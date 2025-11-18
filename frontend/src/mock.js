@@ -4,52 +4,92 @@ export const mockUser = {
   username: 'LearnMaster',
   email: 'user@example.com',
   avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LearnMaster',
-  level: 5,
-  xp: 2340,
-  xpToNextLevel: 3000,
-  points: 1250,
-  streak: 7,
-  totalStudyTime: 24.5, // hours
-  joinDate: '2025-01-01',
-  lastLoginDate: new Date().toISOString().split('T')[0]
+  level: 1,
+  xp: 0,
+  xpToNextLevel: 500,
+  credits: 100, // Starting credits
+  streak: 0,
+  totalStudyTime: 0, // hours
+  joinDate: new Date().toISOString().split('T')[0],
+  lastLoginDate: new Date().toISOString().split('T')[0],
+  isAdmin: false // Default users are not admin
 };
 
 export const mockEbooks = [
   {
-    id: 'book_1',
-    title: 'Introduction to JavaScript',
-    author: 'John Doe',
+    id: 'book_cpp',
+    title: 'C++ Programming Complete Guide',
+    author: 'Programming Experts',
     category: 'Programming',
-    cover: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400',
-    description: 'Learn the fundamentals of JavaScript programming',
-    pages: 250,
-    readProgress: 45,
-    lastRead: '2025-01-15',
-    tags: ['javascript', 'programming', 'web development']
-  },
-  {
-    id: 'book_2',
-    title: 'Machine Learning Basics',
-    author: 'Jane Smith',
-    category: 'AI & ML',
-    cover: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400',
-    description: 'Understanding machine learning concepts',
-    pages: 320,
-    readProgress: 20,
-    lastRead: '2025-01-10',
-    tags: ['machine learning', 'AI', 'data science']
-  },
-  {
-    id: 'book_3',
-    title: 'Design Patterns',
-    author: 'Bob Johnson',
-    category: 'Software Engineering',
-    cover: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400',
-    description: 'Common design patterns in software development',
-    pages: 180,
+    cover: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400',
+    description: 'Master C++ from basics to advanced concepts including OOP, STL, and modern C++ features',
+    pages: 450,
     readProgress: 0,
     lastRead: null,
-    tags: ['design patterns', 'software', 'architecture']
+    tags: ['c++', 'programming', 'oop'],
+    price: 0, // Free book
+    isPurchased: true,
+    creditsReward: 150 // Credits earned on completion
+  },
+  {
+    id: 'book_python',
+    title: 'Python for Beginners to Advanced',
+    author: 'Python Mastery',
+    category: 'Programming',
+    cover: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400',
+    description: 'Complete Python guide covering fundamentals, data structures, web development, and data science',
+    pages: 520,
+    readProgress: 0,
+    lastRead: null,
+    tags: ['python', 'programming', 'data science'],
+    price: 200, // Costs 200 credits
+    isPurchased: false,
+    creditsReward: 250
+  },
+  {
+    id: 'book_java',
+    title: 'Java Programming Masterclass',
+    author: 'Java Institute',
+    category: 'Programming',
+    cover: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400',
+    description: 'Comprehensive Java course from basics to enterprise applications, including Spring Boot',
+    pages: 600,
+    readProgress: 0,
+    lastRead: null,
+    tags: ['java', 'programming', 'spring'],
+    price: 250,
+    isPurchased: false,
+    creditsReward: 300
+  },
+  {
+    id: 'book_c',
+    title: 'C Programming: The Complete Reference',
+    author: 'System Programming',
+    category: 'Programming',
+    cover: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400',
+    description: 'Learn C programming from scratch, perfect for system programming and embedded systems',
+    pages: 400,
+    readProgress: 0,
+    lastRead: null,
+    tags: ['c', 'programming', 'systems'],
+    price: 150,
+    isPurchased: false,
+    creditsReward: 200
+  },
+  {
+    id: 'book_javascript',
+    title: 'Modern JavaScript Complete Course',
+    author: 'Web Dev Pro',
+    category: 'Programming',
+    cover: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400',
+    description: 'Master JavaScript ES6+, async programming, and modern frameworks',
+    pages: 480,
+    readProgress: 0,
+    lastRead: null,
+    tags: ['javascript', 'web development', 'frontend'],
+    price: 180,
+    isPurchased: false,
+    creditsReward: 220
   }
 ];
 
@@ -59,34 +99,36 @@ export const mockAchievements = [
     title: 'First Steps',
     description: 'Complete your first reading session',
     icon: 'BookOpen',
-    unlocked: true,
-    unlockedDate: '2025-01-02',
-    xpReward: 50
+    unlocked: false,
+    xpReward: 50,
+    creditsReward: 10
   },
   {
     id: 'ach_2',
     title: 'Week Warrior',
     description: 'Maintain a 7-day streak',
     icon: 'Flame',
-    unlocked: true,
-    unlockedDate: '2025-01-15',
-    xpReward: 200
+    unlocked: false,
+    xpReward: 200,
+    creditsReward: 50
   },
   {
     id: 'ach_3',
     title: 'Knowledge Seeker',
-    description: 'Read 10 different ebooks',
+    description: 'Complete 3 different ebooks',
     icon: 'Trophy',
     unlocked: false,
-    xpReward: 300
+    xpReward: 300,
+    creditsReward: 100
   },
   {
     id: 'ach_4',
     title: 'Speed Reader',
-    description: 'Complete a book in one day',
+    description: 'Read 100 pages in one session',
     icon: 'Zap',
     unlocked: false,
-    xpReward: 150
+    xpReward: 150,
+    creditsReward: 30
   },
   {
     id: 'ach_5',
@@ -94,66 +136,57 @@ export const mockAchievements = [
     description: 'Have 50 conversations with AI',
     icon: 'Bot',
     unlocked: false,
-    xpReward: 250
+    xpReward: 250,
+    creditsReward: 75
   }
 ];
 
 export const mockLeaderboard = [
-  { rank: 1, username: 'ProLearner', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ProLearner', xp: 8500, level: 12 },
-  { rank: 2, username: 'StudyMaster', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=StudyMaster', xp: 7200, level: 11 },
-  { rank: 3, username: 'BookWorm99', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BookWorm99', xp: 6800, level: 10 },
-  { rank: 4, username: 'LearnMaster', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LearnMaster', xp: 2340, level: 5 },
-  { rank: 5, username: 'QuizKing', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=QuizKing', xp: 2100, level: 5 }
+  { rank: 1, username: 'ProLearner', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ProLearner', xp: 8500, level: 17 },
+  { rank: 2, username: 'StudyMaster', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=StudyMaster', xp: 7200, level: 14 },
+  { rank: 3, username: 'BookWorm99', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=BookWorm99', xp: 6800, level: 13 }
 ];
 
 export const mockDailyChallenge = {
   id: 'challenge_1',
   title: 'Read for 30 minutes',
   description: 'Spend at least 30 minutes reading any ebook',
-  progress: 15,
+  progress: 0,
   target: 30,
   xpReward: 100,
-  pointsReward: 50,
+  creditsReward: 25,
   completed: false,
   expiresAt: new Date(new Date().setHours(23, 59, 59)).toISOString()
 };
 
-export const mockFlashcards = [
-  {
-    id: 'card_1',
-    front: 'What is JavaScript?',
-    back: 'A high-level, interpreted programming language used primarily for web development',
-    category: 'Programming',
-    created: '2025-01-10'
-  },
-  {
-    id: 'card_2',
-    front: 'What is Machine Learning?',
-    back: 'A subset of AI that enables systems to learn and improve from experience without being explicitly programmed',
-    category: 'AI & ML',
-    created: '2025-01-12'
-  }
-];
+export const mockFlashcards = [];
 
 export const mockQuizzes = [
   {
     id: 'quiz_1',
-    title: 'JavaScript Basics',
+    title: 'C++ Basics Quiz',
     questions: [
       {
         id: 'q1',
-        question: 'What does var stand for?',
-        options: ['Variable', 'Variant', 'Vary', 'Value'],
-        correct: 0
+        question: 'What is the correct way to declare a pointer in C++?',
+        options: ['int ptr;', 'int *ptr;', 'ptr int;', 'pointer int;'],
+        correct: 1
       },
       {
         id: 'q2',
-        question: 'Which symbol is used for comments?',
+        question: 'Which symbol is used for comments in C++?',
         options: ['#', '//', '/*', '<!--'],
         correct: 1
+      },
+      {
+        id: 'q3',
+        question: 'What is the size of int in C++ (typically)?',
+        options: ['2 bytes', '4 bytes', '8 bytes', 'Depends on system'],
+        correct: 3
       }
     ],
     category: 'Programming',
-    xpReward: 50
+    xpReward: 75,
+    creditsReward: 15
   }
 ];
