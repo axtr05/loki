@@ -18,10 +18,21 @@ export const GameProvider = ({ children }) => {
   const [achievements, setAchievements] = useState([]);
   const [dailyChallenge, setDailyChallenge] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(false);
 
   // Initialize data from localStorage or use mock data
   useEffect(() => {
     const initializeData = () => {
+      // Check if this is first visit
+      const hasVisited = storage.get('has_visited');
+      
+      if (!hasVisited) {
+        // First time user - show welcome modal
+        setShowWelcome(true);
+        setIsLoading(false);
+        return;
+      }
+
       // Load or initialize user
       let userData = storage.get(STORAGE_KEYS.USER_PROFILE);
       if (!userData) {
