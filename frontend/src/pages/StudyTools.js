@@ -357,25 +357,44 @@ const StudyTools = () => {
                   
                   {quizResults.filter(r => r).length === activeQuiz.questions.length ? (
                     <>
-                      <div className="relative">
-                        <Trophy className="mx-auto text-yellow-500 animate-bounce" size={80} />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-4xl animate-ping">🎉</div>
+                      <div className="relative celebrate">
+                        <div className="absolute -inset-4">
+                          <div className="w-full h-full bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-200 rounded-full blur-xl opacity-50 animate-pulse"></div>
                         </div>
+                        <Trophy className="mx-auto text-yellow-500 trophy-animation relative z-10" size={80} />
                       </div>
-                      <h2 className="text-3xl font-bold text-green-600">Perfect Score!</h2>
-                      <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl p-6 shadow-lg">
-                        <p className="text-2xl font-bold text-gray-900 mb-2">
-                          {quizResults.filter(r => r).length}/{activeQuiz.questions.length} Questions Correct
+                      
+                      <div className="space-y-2">
+                        <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                          🎉 Perfect Score! 🎉
+                        </h2>
+                        <p className="text-gray-600 text-lg">You're amazing!</p>
+                      </div>
+                      
+                      <div className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 border-2 border-green-300 rounded-xl p-8 shadow-2xl relative overflow-hidden">
+                        <div className="absolute inset-0 shine"></div>
+                        <p className="text-3xl font-bold text-gray-900 mb-4 relative z-10">
+                          {quizResults.filter(r => r).length}/{activeQuiz.questions.length} Questions Correct ✓
                         </p>
                         {activeQuiz.creditsReward && (
-                          <div className="mt-4 p-4 bg-yellow-100 rounded-lg border-2 border-yellow-400">
-                            <p className="text-yellow-900 font-semibold text-lg">
-                              🎁 You earned <span className="text-2xl font-bold animate-pulse">{activeQuiz.creditsReward} Credits</span>!
-                            </p>
-                            <p className="text-yellow-800 text-sm mt-2">
-                              Credits have been added to your profile
-                            </p>
+                          <div className="mt-6 p-6 bg-gradient-to-r from-yellow-100 to-amber-100 rounded-xl border-2 border-yellow-400 shadow-lg relative z-10">
+                            <div className="flex items-center justify-center gap-3 mb-3">
+                              <span className="text-4xl animate-bounce">💰</span>
+                              <div>
+                                <p className="text-yellow-900 font-semibold text-xl">
+                                  You earned
+                                </p>
+                                <p className="text-4xl font-bold text-yellow-700 pulse-animation">
+                                  +{activeQuiz.creditsReward} Credits
+                                </p>
+                              </div>
+                              <span className="text-4xl animate-bounce">💰</span>
+                            </div>
+                            <div className="mt-4 p-3 bg-yellow-200 rounded-lg">
+                              <p className="text-yellow-900 text-sm font-medium">
+                                ✨ Credits have been added to your profile!
+                              </p>
+                            </div>
                           </div>
                         )}
                       </div>
