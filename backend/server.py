@@ -37,6 +37,9 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+# Import AI service
+from ai_service import ai_service
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
