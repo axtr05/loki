@@ -7,16 +7,20 @@ const Sidebar = () => {
   const location = useLocation();
   const { user } = useGame();
 
-  const menuItems = [
+  const allMenuItems = [
     { path: '/', icon: Home, label: 'Dashboard' },
     { path: '/library', icon: BookOpen, label: 'Library' },
     { path: '/ai-assistant', icon: Bot, label: 'AI Assistant' },
     { path: '/study-tools', icon: Clock, label: 'Study Tools' },
     { path: '/achievements', icon: Trophy, label: 'Achievements' },
     { path: '/leaderboard', icon: Users, label: 'Leaderboard' },
-    { path: '/profile', icon: User, label: 'Profile' },
-    { path: '/admin', icon: Upload, label: 'Admin Panel' }
+    { path: '/profile', icon: User, label: 'Profile' }
   ];
+
+  // Only show admin panel for admin users
+  const menuItems = user?.isAdmin 
+    ? [...allMenuItems, { path: '/admin', icon: Upload, label: 'Admin Panel' }]
+    : allMenuItems;
 
   const isActive = (path) => location.pathname === path;
 
