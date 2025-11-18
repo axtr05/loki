@@ -69,6 +69,33 @@ async def get_status_checks():
     
     return status_checks
 
+# AI Chat endpoint
+class AIChatRequest(BaseModel):
+    message: str
+    conversationHistory: List[dict] = []
+
+class AIChatResponse(BaseModel):
+    response: str
+    success: bool = True
+
+@api_router.post("/ai/chat", response_model=AIChatResponse)
+async def ai_chat(request: AIChatRequest):
+    try:
+        # Generate session ID from user context (can be enhanced with user ID)
+        session_id = "learning_session"
+        
+        # Get AI response
+        response = await ai_service.chat(
+            message=request.message,
+            session_id=session_id,
+            conversation_history=request.conversationHistory
+        )
+        
+        return AIChatResponse(response=response, success=True)
+    except Exception as e:
+        logger.error(f"AI chat error: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # Include the router in the main app
 app.include_router(api_router)
 
