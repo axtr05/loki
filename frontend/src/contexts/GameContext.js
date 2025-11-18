@@ -218,6 +218,9 @@ export const GameProvider = ({ children }) => {
 
   // Update reading progress
   const updateReadingProgress = (bookId, progress) => {
+    const book = ebooks.find(b => b.id === bookId);
+    const wasCompleted = book?.readProgress === 100;
+    
     const updatedEbooks = ebooks.map(book =>
       book.id === bookId
         ? { ...book, readProgress: progress, lastRead: new Date().toISOString().split('T')[0] }
@@ -228,14 +231,63 @@ export const GameProvider = ({ children }) => {
     storage.set(STORAGE_KEYS.EBOOKS_LIBRARY, updatedEbooks);
 
     // Award XP for reading milestones
-    if (progress === 25 || progress === 50 || progress === 75 || progress === 100) {
+    if (progress === 25 || progress === 50 || progress === 75) {
       awardXP(25, 'reading');
+    }
+
+    // Award credits when book is completed for the first time
+    if (progress === 100 && !wasCompleted) {
+      awardXP(50, 'reading');
+      const creditsEarned = book?.creditsReward || 100;
+      awardCredits(creditsEarned);
+      
+      // Show completion notification
+      window.dispatchEvent(new CustomEvent('bookCompleted', { 
+        detail: { bookTitle: book.title, credits: creditsEarned } 
+      }));
     }
 
     // Check if first book completed
     if (progress === 100 && !achievements.find(a => a.id === 'ach_1')?.unlocked) {
       unlockAchievement('ach_1');
     }
+
+    // Check if completed 3 books
+    const completedBooks = updatedEbooks.filter(b => b.readProgress === 100).length;
+    if (completedBooks >= 3 && !achievements.find(a => a.id === 'ach_3')?.unlocked) {
+      unlockAchievement('ach_3');
+    }
+  };
+
+  // Initialize user on welcome complete
+  const completeWelcome = (username) => {
+    const newUser = {
+      ...mockUser,
+      username: username,
+      id: `user_${Date.now()}`,
+      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`
+    };
+
+    setUser(newUser);
+    storage.set(STORAGE_KEYS.USER_PROFILE, newUser);
+    storage.set('has_visited', true);
+
+    // Initialize ebooks
+    const ebooksData = mockEbooks;
+    setEbooks(ebooksData);
+    storage.set(STORAGE_KEYS.EBOOKS_LIBRARY, ebooksData);
+
+    // Initialize achievements
+    const achievementsData = mockAchievements;
+    setAchievements(achievementsData);
+    storage.set(STORAGE_KEYS.ACHIEVEMENTS, achievementsData);
+
+    // Initialize daily challenge
+    const challengeData = mockDailyChallenge;
+    setDailyChallenge(challengeData);
+    storage.set(STORAGE_KEYS.CURRENT_CHALLENGE, challengeData);
+
+    setShowWelcome(false);
   };
 
   const showLevelUpCelebration = (level) => {
