@@ -153,21 +153,20 @@ const Dashboard = () => {
       {/* Quick Stats */}
       <div className="bg-white rounded-xl p-6 border border-gray-200">
         <div className="flex items-center gap-2 mb-4">
-          <TrendingUp className="text-blue-600" size={24} />
-          <h2 className="text-xl font-bold text-gray-900">Your Progress</h2>
+          <TrendingUp className="text-blue-600" size={24} />\n          <h2 className="text-xl font-bold text-gray-900">Your Progress</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900">{user.totalStudyTime}</p>
-            <p className="text-sm text-gray-600 mt-1">Hours Studied</p>
+            <p className="text-3xl font-bold text-green-600">{user.credits || 0}</p>
+            <p className="text-sm text-gray-600 mt-1">Credits</p>
           </div>
           <div className="text-center">
             <p className="text-3xl font-bold text-gray-900">{unlockedAchievements}</p>
             <p className="text-sm text-gray-600 mt-1">Achievements</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900">{ebooks.length}</p>
-            <p className="text-sm text-gray-600 mt-1">Books Available</p>
+            <p className="text-3xl font-bold text-gray-900">{ebooks.filter(b => b.isPurchased).length}/{ebooks.length}</p>
+            <p className="text-sm text-gray-600 mt-1">Books Unlocked</p>
           </div>
           <div className="text-center">
             <p className="text-3xl font-bold text-gray-900">{user.streak}</p>
