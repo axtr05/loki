@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Clock, Plus, Play, Pause, RotateCcw, BookOpen, CheckCircle } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Clock, Plus, Play, Pause, RotateCcw, BookOpen, CheckCircle, XCircle, Trophy } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useGame } from '../contexts/GameContext';
 import { storage } from '../utils/storage';
 import { mockFlashcards, mockQuizzes } from '../mock';
+import Confetti from 'react-confetti';
 
 const StudyTools = () => {
   const { awardXP, awardCredits } = useGame();
