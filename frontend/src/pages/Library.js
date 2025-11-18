@@ -74,16 +74,45 @@ const Library = () => {
         {filteredBooks.map((book) => (
           <div
             key={book.id}
-            className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
-            onClick={() => handleReadBook(book)}
+            className={`bg-white rounded-xl border-2 overflow-hidden hover:shadow-lg transition-all ${
+              book.isPurchased ? 'border-gray-200 cursor-pointer' : 'border-orange-200'
+            } group`}
+            onClick={() => book.isPurchased && handleReadBook(book)}
           >
             <div className="aspect-[3/4] relative overflow-hidden bg-gray-100">
               <img
                 src={book.cover}
                 alt={book.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className={`w-full h-full object-cover transition-transform duration-300 ${
+                  book.isPurchased ? 'group-hover:scale-105' : 'opacity-60'
+                }`}
               />
-              {book.readProgress > 0 && (
+              
+              {/* Locked overlay */}
+              {!book.isPurchased && (
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-white font-bold text-lg">{book.price} Credits</p>
+                  </div>
+                </div>
+              )}
+              
+              {/* Free badge */}
+              {book.price === 0 && (
+                <div className="absolute top-2 left-2">
+                  <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    FREE
+                  </div>
+                </div>
+              )}
+              
+              {/* Progress badge */}
+              {book.isPurchased && book.readProgress > 0 && (
                 <div className="absolute top-2 right-2">
                   <div className="bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
                     {book.readProgress}%
@@ -91,15 +120,37 @@ const Library = () => {
                 </div>
               )}
             </div>
+            
             <div className="p-4">
               <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2">{book.title}</h3>
               <p className="text-sm text-gray-600 mb-2">{book.author}</p>
-              <Badge variant="secondary" className="mb-3">{book.category}</Badge>
-              {book.readProgress > 0 && (
+              <div className="flex items-center justify-between mb-3">
+                <Badge variant="secondary">{book.category}</Badge>
+                {!book.isPurchased && (
+                  <span className="text-xs text-orange-600 font-semibold">
+                    Earn {book.creditsReward} credits
+                  </span>
+                )}
+              </div>
+              
+              {book.isPurchased && book.readProgress > 0 && (
                 <div className="space-y-1">
                   <Progress value={book.readProgress} className="h-1" />
                   <p className="text-xs text-gray-500">Last read: {book.lastRead}</p>
                 </div>
+              )}
+              
+              {!book.isPurchased && (
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePurchaseBook(book);
+                  }}
+                  className="w-full mt-2"
+                  variant="default"
+                >
+                  Unlock for {book.price} Credits
+                </Button>
               )}
             </div>
           </div>
