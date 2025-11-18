@@ -317,7 +317,7 @@ const StudyTools = () => {
             </div>
           ) : (
             <div className="bg-white rounded-xl p-8 border border-gray-200 max-w-2xl mx-auto">
-              {currentQuestion < activeQuiz.questions.length ? (
+              {!quizCompleted ? (
                 <div className="space-y-6">
                   <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold text-gray-900">{activeQuiz.title}</h2>
