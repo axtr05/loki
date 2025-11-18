@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useGame } from '../contexts/GameContext';
 import { Search, Filter, BookOpen, Clock } from 'lucide-react';
 import { Input } from '../components/ui/input';
