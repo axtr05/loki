@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGame } from '../contexts/GameContext';
-import { Calendar, Clock, Trophy, BookOpen, Flame, TrendingUp } from 'lucide-react';
+import { Calendar, Clock, Trophy, BookOpen, Flame, TrendingUp, Coins } from 'lucide-react';
 import StatCard from '../components/StatCard';
 
 const Profile = () => {
