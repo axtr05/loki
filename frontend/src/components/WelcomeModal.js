@@ -25,7 +25,7 @@ const WelcomeModal = ({ isOpen, onComplete }) => {
               <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="text-white" size={40} />
               </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome to LearnHub!</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome to EduPulse!</h1>
               <p className="text-gray-600">Your gamified learning journey starts here</p>
             </div>
 
