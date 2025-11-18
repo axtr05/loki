@@ -265,7 +265,7 @@ export const GameProvider = ({ children }) => {
       ...mockUser,
       username: username,
       id: `user_${Date.now()}`,
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`
+      avatar: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=400&fit=crop'
     };
 
     setUser(newUser);
