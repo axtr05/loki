@@ -441,10 +441,20 @@ const StudyTools = () => {
                       </Button>
                     )}
                     <Button onClick={() => {
-                      setActiveQuiz(null);
-                      setQuizResults([]);
-                      setCurrentQuestion(0);
-                      setSelectedAnswer(null);
+                      if (quizResults.filter(r => r).length === activeQuiz.questions.length) {
+                        // Done - close quiz
+                        setActiveQuiz(null);
+                        setQuizResults([]);
+                        setCurrentQuestion(0);
+                        setSelectedAnswer(null);
+                        setQuizCompleted(false);
+                      } else {
+                        // Try Again - restart quiz
+                        setQuizResults([]);
+                        setCurrentQuestion(0);
+                        setSelectedAnswer(null);
+                        setQuizCompleted(false);
+                      }
                     }}>
                       {quizResults.filter(r => r).length === activeQuiz.questions.length ? 'Done' : 'Try Again'}
                     </Button>
