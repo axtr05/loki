@@ -218,28 +218,56 @@ const Library = () => {
                 <Badge>{selectedBook.category}</Badge>
               </div>
               
-              {/* PDF Viewer Placeholder */}
-              <div className="bg-gray-50 rounded-lg p-8 min-h-[400px] flex flex-col items-center justify-center">
-                <BookOpen className="text-gray-400 mb-4" size={64} />
-                <p className="text-gray-600 mb-4">PDF Viewer (Base64 content will be displayed here)</p>
-                <p className="text-sm text-gray-500 mb-6">Reading progress: {selectedBook.readProgress}%</p>
-                
-                {/* Progress Controls */}
-                <div className="flex gap-2 flex-wrap justify-center">
-                  <Button onClick={() => handleUpdateProgress(25)} variant="outline" size="sm">
-                    Mark 25%
-                  </Button>
-                  <Button onClick={() => handleUpdateProgress(50)} variant="outline" size="sm">
-                    Mark 50%
-                  </Button>
-                  <Button onClick={() => handleUpdateProgress(75)} variant="outline" size="sm">
-                    Mark 75%
-                  </Button>
-                  <Button onClick={() => handleUpdateProgress(100)} variant="outline" size="sm">
-                    Mark Complete
-                  </Button>
-                </div>
-              </div>
+              {/* PDF Viewer */}
+              <div className="bg-gray-50 rounded-lg overflow-hidden">
+                {selectedBook.pdfUrl ? (
+                  <div className="space-y-4">
+                    <iframe
+                      src={`${process.env.REACT_APP_BACKEND_URL}/api/pdfs/${selectedBook.pdfUrl}`}
+                      className="w-full h-[500px] border-0"
+                      title={selectedBook.title}
+                    />
+                    <div className="p-4 bg-white border-t">
+                      <p className="text-sm text-gray-500 mb-3">Reading progress: {selectedBook.readProgress}%</p>
+                      <div className="flex gap-2 flex-wrap justify-center">
+                        <Button onClick={() => handleUpdateProgress(25)} variant="outline" size="sm">
+                          Mark 25%
+                        </Button>
+                        <Button onClick={() => handleUpdateProgress(50)} variant="outline" size="sm">
+                          Mark 50%
+                        </Button>
+                        <Button onClick={() => handleUpdateProgress(75)} variant="outline" size="sm">
+                          Mark 75%
+                        </Button>
+                        <Button onClick={() => handleUpdateProgress(100)} variant="outline" size="sm">
+                          Mark Complete
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-8 min-h-[400px] flex flex-col items-center justify-center">
+                    <BookOpen className="text-gray-400 mb-4" size={64} />
+                    <p className="text-gray-600 mb-4">PDF Viewer (Base64 content will be displayed here)</p>
+                    <p className="text-sm text-gray-500 mb-6">Reading progress: {selectedBook.readProgress}%</p>
+                    
+                    {/* Progress Controls */}
+                    <div className="flex gap-2 flex-wrap justify-center">
+                      <Button onClick={() => handleUpdateProgress(25)} variant="outline" size="sm">
+                        Mark 25%
+                      </Button>
+                      <Button onClick={() => handleUpdateProgress(50)} variant="outline" size="sm">
+                        Mark 50%
+                      </Button>
+                      <Button onClick={() => handleUpdateProgress(75)} variant="outline" size="sm">
+                        Mark 75%
+                      </Button>
+                      <Button onClick={() => handleUpdateProgress(100)} variant="outline" size="sm">
+                        Mark Complete
+                      </Button>
+                    </div>
+                  </div>
+                )}
 
               {/* Book Info */}
               <div className="border-t pt-4">
