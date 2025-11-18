@@ -42,21 +42,21 @@ const Dashboard = () => {
           label="Day Streak"
           value={user.streak}
           color="orange"
-          trend="Keep it going!"
+          trend={user.streak > 0 ? "Keep it going!" : "Start your streak today!"}
         />
         <StatCard
           icon={Coins}
-          label="Points"
-          value={user.points}
+          label="Credits"
+          value={user.credits || 0}
           color="green"
-          trend="Earn more by completing activities"
+          trend="Complete books to earn more"
         />
         <StatCard
           icon={BookOpen}
-          label="Books Read"
+          label="Books Completed"
           value={totalBooksRead}
           color="purple"
-          trend={`${ebooks.length} total in library`}
+          trend={`${ebooks.filter(b => b.isPurchased).length} unlocked`}
         />
       </div>
 
