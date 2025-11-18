@@ -101,3 +101,139 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: |
+  1. Change website name from LearnHub to EduPulse
+  2. Fix profile page error - it's not opening at all
+  3. For C++, integrate the uploaded PDF (PPS_WORKBOOK.pdf). Once PDF is completed, show a quiz. If user gets all answers correct, award credits.
+  4. Fix credits stuck at 100 - ensure credits accumulate properly
+
+backend:
+  - task: "PDF serving endpoint"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Added PDF endpoint at /api/pdfs/{filename} to serve the C++ workbook PDF"
+
+  - task: "PDF file storage"
+    implemented: true
+    working: true
+    file: "/app/backend/static/pdfs/cpp_workbook.pdf"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Downloaded and stored PPS_WORKBOOK.pdf in backend/static/pdfs/"
+
+frontend:
+  - task: "Fix Profile page - Add Coins import"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/Profile.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Added Coins icon import from lucide-react to fix Profile page crash"
+
+  - task: "Change LearnHub to EduPulse"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Sidebar.js, /app/frontend/src/components/WelcomeModal.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Changed all occurrences of 'LearnHub' to 'EduPulse' in Sidebar and WelcomeModal components"
+
+  - task: "C++ PDF Integration"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/mock.js, /app/frontend/src/pages/Library.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Updated C++ book to include pdfUrl, hasQuiz, and quizId. Modified Library.js to display PDF in iframe using backend API"
+
+  - task: "C++ Completion Quiz"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/mock.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Created comprehensive 10-question C++ quiz based on workbook content with 200 credits reward for 100% score"
+
+  - task: "Quiz to Library Integration"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/Library.js, /app/frontend/src/pages/StudyTools.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "When C++ book reaches 100%, redirect to quiz. Award credits only on 100% quiz completion"
+
+  - task: "Credits System Fix"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/mock.js, /app/frontend/src/pages/StudyTools.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Changed C++ book creditsReward to 0 (no credits for just reading). Credits only awarded through quiz completion with awardCredits function"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 0
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Profile page opening correctly"
+    - "Website name changed to EduPulse"
+    - "C++ PDF displaying in Library"
+    - "Quiz appears after completing C++ book"
+    - "Credits awarded on 100% quiz score"
+    - "Credits accumulating properly"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "sequential"
+
+agent_communication:
+  - agent: "main"
+    message: |
+      Completed all requested changes:
+      1. Fixed Profile page by adding Coins import
+      2. Changed LearnHub to EduPulse across the application
+      3. Integrated C++ PDF with backend API endpoint
+      4. Created 10-question C++ quiz based on workbook content
+      5. Connected quiz to book completion - quiz opens after 100% reading
+      6. Fixed credits system - C++ book awards 200 credits only after 100% quiz score
+      7. Credits system now properly accumulates
+      
+      Ready for backend and frontend testing.
