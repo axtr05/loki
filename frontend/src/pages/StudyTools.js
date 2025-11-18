@@ -14,6 +14,8 @@ import Confetti from 'react-confetti';
 const StudyTools = () => {
   const { awardXP, awardCredits } = useGame();
   const location = useLocation();
+  const navigate = useNavigate();
+  const [showConfetti, setShowConfetti] = useState(false);
 
   // Pomodoro Timer
   const [time, setTime] = useState(25 * 60); // 25 minutes in seconds
