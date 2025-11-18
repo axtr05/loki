@@ -10,6 +10,7 @@ import { useGame } from '../contexts/GameContext';
 import { storage } from '../utils/storage';
 import { mockFlashcards, mockQuizzes } from '../mock';
 import Confetti from 'react-confetti';
+import '../animations.css';
 
 const StudyTools = () => {
   const { awardXP, awardCredits } = useGame();
