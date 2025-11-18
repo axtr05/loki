@@ -46,6 +46,15 @@ const Sidebar = () => {
               <p className="text-sm text-gray-500">Level {user.level}</p>
             </div>
           </div>
+          
+          {/* Credits Display */}
+          <div className="bg-green-50 rounded-lg p-2 mb-3 border border-green-200">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-gray-700">Credits</span>
+              <span className="text-sm font-bold text-green-600">{user.credits || 0}</span>
+            </div>
+          </div>
+          
           {/* XP Progress */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs text-gray-600">
