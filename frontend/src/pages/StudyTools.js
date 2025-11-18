@@ -351,31 +351,80 @@ const StudyTools = () => {
                   </div>
                 </div>
               ) : (
-                <div className="text-center space-y-6">
-                  <CheckCircle className="mx-auto text-green-600" size={64} />
-                  <h2 className="text-2xl font-bold text-gray-900">Quiz Completed!</h2>
-                  <p className="text-lg text-gray-600">
-                    You got {quizResults.filter(r => r).length} out of {activeQuiz.questions.length} correct
-                  </p>
-                  {quizResults.filter(r => r).length === activeQuiz.questions.length && activeQuiz.creditsReward && (
-                    <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
-                      <p className="text-green-800 font-semibold">
-                        Perfect Score! You earned {activeQuiz.creditsReward} credits! 🎉
-                      </p>
-                    </div>
+                <div className="text-center space-y-6 relative">
+                  {showConfetti && <Confetti recycle={false} numberOfPieces={500} />}
+                  
+                  {quizResults.filter(r => r).length === activeQuiz.questions.length ? (
+                    <>
+                      <div className="relative">
+                        <Trophy className="mx-auto text-yellow-500 animate-bounce" size={80} />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-4xl animate-ping">🎉</div>
+                        </div>
+                      </div>
+                      <h2 className="text-3xl font-bold text-green-600">Perfect Score!</h2>
+                      <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl p-6 shadow-lg">
+                        <p className="text-2xl font-bold text-gray-900 mb-2">
+                          {quizResults.filter(r => r).length}/{activeQuiz.questions.length} Questions Correct
+                        </p>
+                        {activeQuiz.creditsReward && (
+                          <div className="mt-4 p-4 bg-yellow-100 rounded-lg border-2 border-yellow-400">
+                            <p className="text-yellow-900 font-semibold text-lg">
+                              🎁 You earned <span className="text-2xl font-bold animate-pulse">{activeQuiz.creditsReward} Credits</span>!
+                            </p>
+                            <p className="text-yellow-800 text-sm mt-2">
+                              Credits have been added to your profile
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <XCircle className="mx-auto text-orange-500" size={64} />
+                      <h2 className="text-2xl font-bold text-gray-900">Quiz Completed</h2>
+                      <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-6">
+                        <p className="text-3xl font-bold text-gray-900 mb-4">
+                          {quizResults.filter(r => r).length}/{activeQuiz.questions.length} Questions Correct
+                        </p>
+                        {activeQuiz.requiredForCompletion && (
+                          <div className="bg-orange-100 border-2 border-orange-300 rounded-lg p-4 mt-4">
+                            <p className="text-orange-900 font-semibold mb-2">
+                              ❌ You didn't get 10/10
+                            </p>
+                            <p className="text-orange-800 text-sm">
+                              You need to get ALL questions correct to earn {activeQuiz.creditsReward} credits.
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </>
                   )}
-                  {quizResults.filter(r => r).length < activeQuiz.questions.length && activeQuiz.requiredForCompletion && (
-                    <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-4">
-                      <p className="text-orange-800 font-semibold">
-                        You need to get all questions correct to earn credits. Try again!
-                      </p>
-                    </div>
-                  )}
-                  <Button onClick={() => {
-                    setActiveQuiz(null);
-                    setQuizResults([]);
-                    setCurrentQuestion(0);
-                  }}>Back to Quizzes</Button>
+                  
+                  <div className="flex gap-3 justify-center">
+                    {quizResults.filter(r => r).length < activeQuiz.questions.length && activeQuiz.requiredForCompletion && (
+                      <Button 
+                        onClick={() => {
+                          const pendingQuiz = localStorage.getItem('pendingQuiz');
+                          if (pendingQuiz) {
+                            const quizData = JSON.parse(pendingQuiz);
+                            navigate('/library');
+                          }
+                        }}
+                        variant="outline"
+                      >
+                        Back to Book
+                      </Button>
+                    )}
+                    <Button onClick={() => {
+                      setActiveQuiz(null);
+                      setQuizResults([]);
+                      setCurrentQuestion(0);
+                      setSelectedAnswer(null);
+                    }}>
+                      {quizResults.filter(r => r).length === activeQuiz.questions.length ? 'Done' : 'Try Again'}
+                    </Button>
+                  </div>
                 </div>
               )}
             </div>
