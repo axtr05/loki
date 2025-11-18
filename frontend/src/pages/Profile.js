@@ -25,7 +25,7 @@ const Profile = () => {
           <img
             src={user.avatar}
             alt={user.username}
-            className="w-32 h-32 rounded-full border-4 border-blue-500"
+            className="w-32 h-32 rounded-full border-4 border-blue-500 object-cover shadow-lg"
           />
           <div className="flex-1 text-center md:text-left">
             <h2 className="text-3xl font-bold text-gray-900">{user.username}</h2>
