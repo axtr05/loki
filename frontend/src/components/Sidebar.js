@@ -40,36 +40,36 @@ const Sidebar = () => {
 
       {/* User Info */}
       {user && (
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3 mb-3">
             <img
               src={user.avatar}
               alt={user.username}
-              className="w-12 h-12 rounded-full border-2 border-blue-500"
+              className="w-12 h-12 rounded-full border-2 border-blue-500 dark:border-purple-500"
             />
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-gray-900 truncate">{user.username}</p>
-              <p className="text-sm text-gray-500">Level {user.level}</p>
+              <p className="font-semibold text-gray-900 dark:text-white truncate">{user.username}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Level {user.level}</p>
             </div>
           </div>
           
           {/* Credits Display */}
-          <div className="bg-green-50 rounded-lg p-2 mb-3 border border-green-200">
+          <div className="bg-green-50 dark:bg-green-900/30 rounded-lg p-2 mb-3 border border-green-200 dark:border-green-700">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-gray-700">Credits</span>
-              <span className="text-sm font-bold text-green-600">{user.credits || 0}</span>
+              <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Credits</span>
+              <span className="text-sm font-bold text-green-600 dark:text-green-400">{user.credits || 0}</span>
             </div>
           </div>
           
           {/* XP Progress */}
           <div className="space-y-1">
-            <div className="flex justify-between text-xs text-gray-600">
+            <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
               <span>{user.xp} XP</span>
               <span>{user.xpToNextLevel} XP</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
               <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                className="bg-blue-600 dark:bg-purple-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${(user.xp / user.xpToNextLevel) * 100}%` }}
               />
             </div>
