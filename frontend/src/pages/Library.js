@@ -163,8 +163,8 @@ const Library = () => {
             </div>
             
             <div className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2">{book.title}</h3>
-              <p className="text-sm text-gray-600 mb-2">{book.author}</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">{book.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{book.author}</p>
               <div className="flex items-center justify-between mb-3">
                 <Badge variant="secondary">{book.category}</Badge>
                 {!book.isPurchased && (
