@@ -191,6 +191,18 @@ backend:
         comment: "✅ TESTED: AI chat endpoint POST /api/ai/chat working correctly. Successfully processes messages and returns AI responses using GPT-4o-mini via LiteLLM integration."
 
 frontend:
+  - task: "Logo replacement with image"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Sidebar.js, /app/frontend/public/assets/edupulse-logo.png"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Downloaded user's logo image (401KB) to /app/frontend/public/assets/edupulse-logo.png and updated Sidebar to display image instead of text"
+
   - task: "Fix Profile page - Add Coins import"
     implemented: true
     working: true
