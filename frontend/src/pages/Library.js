@@ -115,8 +115,8 @@ const Library = () => {
         {filteredBooks.map((book) => (
           <div
             key={book.id}
-            className={`bg-white rounded-xl border-2 overflow-hidden hover:shadow-lg transition-all ${
-              book.isPurchased ? 'border-gray-200 cursor-pointer' : 'border-orange-200'
+            className={`bg-white dark:bg-gray-800 rounded-xl border-2 overflow-hidden hover:shadow-lg transition-all ${
+              book.isPurchased ? 'border-gray-200 dark:border-gray-700 cursor-pointer' : 'border-orange-200 dark:border-orange-700'
             } group`}
             onClick={() => book.isPurchased && handleReadBook(book)}
           >
