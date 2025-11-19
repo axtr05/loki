@@ -320,14 +320,14 @@ const StudyTools = () => {
               {!quizCompleted ? (
                 <div className="space-y-6">
                   <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-gray-900">{activeQuiz.title}</h2>
-                    <span className="text-sm text-gray-600">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{activeQuiz.title}</h2>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
                       Question {currentQuestion + 1} / {activeQuiz.questions.length}
                     </span>
                   </div>
 
-                  <div className="bg-blue-50 rounded-xl p-6">
-                    <p className="text-lg font-semibold text-gray-900">
+                  <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-6">
+                    <p className="text-lg font-semibold text-gray-900 dark:text-white">
                       {activeQuiz.questions[currentQuestion].question}
                     </p>
                   </div>
