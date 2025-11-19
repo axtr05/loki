@@ -103,10 +103,34 @@
 #====================================================================================================
 
 user_problem_statement: |
-  1. Change website name from LearnHub to EduPulse
-  2. Fix profile page error - it's not opening at all
-  3. For C++, integrate the uploaded PDF (PPS_WORKBOOK.pdf). Once PDF is completed, show a quiz. If user gets all answers correct, award credits.
-  4. Fix credits stuck at 100 - ensure credits accumulate properly
+  Previous tasks (Completed):
+  1. Change website name from LearnHub to EduPulse ✓
+  2. Fix profile page error - it's not opening at all ✓
+  3. For C++, integrate the uploaded PDF (PPS_WORKBOOK.pdf). Once PDF is completed, show a quiz. If user gets all answers correct, award credits. ✓
+  4. Fix credits stuck at 100 - ensure credits accumulate properly ✓
+  
+  New tasks (Current):
+  1. Replace EduPulse text logo with uploaded image logo (edupulse-logo.png)
+  2. Add 2 new books to Library with PDFs:
+     - Python Programming Notes (python_notes.pdf)
+     - Java Notes for Professionals (java_notes.pdf)
+  3. Create quizzes for Python and Java books (10 questions each)
+  4. After completing each book, redirect to quiz
+  5. Award credits only on 10/10 quiz score with celebration
+  6. Show score format like "7/10" and message "You didn't get 10/10, no credits"
+  7. Add "Back to Book" button when quiz incomplete
+  8. Implement new theme system:
+     - Light mode: White (#FFFFFF), grey (#F3F4F6), blue (#2563EB), green (#10B981)
+     - Dark mode: Black (#111111), dark grey (#1A1A1A), purple (#6E48AA, #8E6EC8)
+  9. Add theme toggle button in top right corner
+  10. Add To-Do List feature with:
+      - Task input with dark purple background
+      - Task cards with checkbox, priority tags, timer, delete
+      - Priority system (High/Medium/Low) with colored badges
+      - Timer per task with countdown
+      - Sorting & filtering (Completed/Pending/High Priority)
+      - Search functionality
+      - Smooth animations matching neon/gamified style
 
 backend:
   - task: "PDF serving endpoint"
