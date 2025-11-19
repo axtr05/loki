@@ -302,12 +302,12 @@ const StudyTools = () => {
           {!activeQuiz ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {quizzes.map((quiz) => (
-                <div key={quiz.id} className="bg-white rounded-xl p-6 border border-gray-200">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{quiz.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{quiz.category}</p>
+                <div key={quiz.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{quiz.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{quiz.category}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">{quiz.questions.length} questions</span>
-                    <span className="text-sm text-blue-600 font-medium">+{quiz.xpReward} XP</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{quiz.questions.length} questions</span>
+                    <span className="text-sm text-blue-600 dark:text-purple-400 font-medium">+{quiz.xpReward} XP</span>
                   </div>
                   <Button onClick={() => handleStartQuiz(quiz)} className="w-full mt-4">
                     Start Quiz
@@ -316,7 +316,7 @@ const StudyTools = () => {
               ))}
             </div>
           ) : (
-            <div className="bg-white rounded-xl p-8 border border-gray-200 max-w-2xl mx-auto">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 max-w-2xl mx-auto">
               {!quizCompleted ? (
                 <div className="space-y-6">
                   <div className="flex justify-between items-center">
