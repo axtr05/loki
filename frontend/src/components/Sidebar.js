@@ -26,11 +26,16 @@ const Sidebar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0 flex flex-col">
+    <div className="w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen fixed left-0 top-0 flex flex-col">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-200">
-        <h1 className="text-2xl font-bold text-gray-900">EduPulse</h1>
-        <p className="text-sm text-gray-500 mt-1">Gamified Learning</p>
+      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center gap-3">
+          <img src="/assets/edupulse-logo.png" alt="EduPulse Logo" className="w-12 h-12 object-contain" />
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">EduPulse</h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Gamified Learning</p>
+          </div>
+        </div>
       </div>
 
       {/* User Info */}
