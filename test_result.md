@@ -147,6 +147,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "✅ TESTED: PDF endpoint working correctly. Returns proper application/pdf content-type, serves 446KB PDF file with valid %PDF header. Status 200 OK."
+      - working: true
+        agent: "main"
+        comment: "Added Python (1.6MB) and Java (7.1MB) PDFs to /app/backend/static/pdfs/"
 
   - task: "PDF file storage"
     implemented: true
