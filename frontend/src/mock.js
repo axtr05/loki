@@ -45,8 +45,8 @@ export const mockEbooks = [
     readProgress: 0,
     lastRead: null,
     tags: ['python', 'programming', 'data science'],
-    price: 0, // Free book
-    isPurchased: true,
+    price: 180, // Costs 180 credits
+    isPurchased: false,
     creditsReward: 0, // No credits for just reading - must complete quiz
     pdfUrl: 'python_notes.pdf',
     hasQuiz: true,
@@ -63,8 +63,8 @@ export const mockEbooks = [
     readProgress: 0,
     lastRead: null,
     tags: ['java', 'programming', 'spring'],
-    price: 0, // Free book
-    isPurchased: true,
+    price: 120, // Costs 120 credits
+    isPurchased: false,
     creditsReward: 0, // No credits for just reading - must complete quiz
     pdfUrl: 'java_notes.pdf',
     hasQuiz: true,
