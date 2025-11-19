@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Bot, Clock, Trophy, Users, User, Settings, Upload } from 'lucide-react';
+import { Home, BookOpen, Bot, Clock, Trophy, Users, User, Settings, Upload, ListTodo } from 'lucide-react';
 import { useGame } from '../contexts/GameContext';
 
 const Sidebar = () => {
@@ -12,6 +12,7 @@ const Sidebar = () => {
     { path: '/library', icon: BookOpen, label: 'Library' },
     { path: '/ai-assistant', icon: Bot, label: 'AI Assistant' },
     { path: '/study-tools', icon: Clock, label: 'Study Tools' },
+    { path: '/todo', icon: ListTodo, label: 'To-Do List' },
     { path: '/achievements', icon: Trophy, label: 'Achievements' },
     { path: '/leaderboard', icon: Users, label: 'Leaderboard' },
     { path: '/profile', icon: User, label: 'Profile' }
