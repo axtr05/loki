@@ -195,9 +195,9 @@ const StudyTools = () => {
                 </Button>
               </div>
 
-              <div className="pt-4 border-t">
-                <p className="text-sm text-gray-600">
-                  Complete a focus session to earn <span className="text-blue-600 font-semibold">+25 XP</span>
+              <div className="pt-4 border-t dark:border-gray-700">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Complete a focus session to earn <span className="text-blue-600 dark:text-purple-400 font-semibold">+25 XP</span>
                 </p>
               </div>
             </div>
