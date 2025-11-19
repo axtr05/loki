@@ -36,7 +36,7 @@ export const mockEbooks = [
   },
   {
     id: 'book_python',
-    title: 'Python for Beginners to Advanced',
+    title: 'PYTHON PROGRAMMING NOTES',
     author: 'Python Mastery',
     category: 'Programming',
     cover: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400',
@@ -45,13 +45,16 @@ export const mockEbooks = [
     readProgress: 0,
     lastRead: null,
     tags: ['python', 'programming', 'data science'],
-    price: 200, // Costs 200 credits
-    isPurchased: false,
-    creditsReward: 250
+    price: 0, // Free book
+    isPurchased: true,
+    creditsReward: 0, // No credits for just reading - must complete quiz
+    pdfUrl: 'python_notes.pdf',
+    hasQuiz: true,
+    quizId: 'quiz_python_complete'
   },
   {
     id: 'book_java',
-    title: 'Java Programming Masterclass',
+    title: 'JavaNotesForProfessionals',
     author: 'Java Institute',
     category: 'Programming',
     cover: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400',
@@ -60,9 +63,12 @@ export const mockEbooks = [
     readProgress: 0,
     lastRead: null,
     tags: ['java', 'programming', 'spring'],
-    price: 250,
-    isPurchased: false,
-    creditsReward: 300
+    price: 0, // Free book
+    isPurchased: true,
+    creditsReward: 0, // No credits for just reading - must complete quiz
+    pdfUrl: 'java_notes.pdf',
+    hasQuiz: true,
+    quizId: 'quiz_java_complete'
   },
   {
     id: 'book_c',
@@ -256,6 +262,150 @@ export const mockQuizzes = [
         id: 'q10',
         question: 'What is the correct way to declare a 2D array of integers with 3 rows and 4 columns?',
         options: ['int arr[4][3];', 'int arr[3][4];', 'int[3,4] arr;', 'array<int, 3, 4> arr;'],
+        correct: 1
+      }
+    ],
+    category: 'Programming',
+    xpReward: 150,
+    creditsReward: 200,
+    requiredForCompletion: true
+  },
+  {
+    id: 'quiz_python_complete',
+    title: 'Python Programming Complete Quiz',
+    bookId: 'book_python',
+    description: 'Complete this quiz after finishing the Python notes to earn credits!',
+    questions: [
+      {
+        id: 'q1',
+        question: 'What is the correct way to create a function in Python?',
+        options: ['function myFunc():', 'def myFunc():', 'create myFunc():', 'func myFunc():'],
+        correct: 1
+      },
+      {
+        id: 'q2',
+        question: 'Which of the following is used to define a block of code in Python?',
+        options: ['Brackets', 'Parentheses', 'Indentation', 'Quotation'],
+        correct: 2
+      },
+      {
+        id: 'q3',
+        question: 'What is the output of: print(type([]))?',
+        options: ["<class 'array'>", "<class 'list'>", "<class 'tuple'>", "<class 'dict'>"],
+        correct: 1
+      },
+      {
+        id: 'q4',
+        question: 'Which keyword is used for exception handling in Python?',
+        options: ['catch', 'except', 'handle', 'error'],
+        correct: 1
+      },
+      {
+        id: 'q5',
+        question: 'What is the difference between a list and a tuple in Python?',
+        options: ['Lists are immutable, tuples are mutable', 'Tuples are immutable, lists are mutable', 'No difference', 'Lists are faster'],
+        correct: 1
+      },
+      {
+        id: 'q6',
+        question: 'What does the "pass" statement do in Python?',
+        options: ['Exits the loop', 'Skips the current iteration', 'Does nothing (placeholder)', 'Raises an error'],
+        correct: 2
+      },
+      {
+        id: 'q7',
+        question: 'How do you create a dictionary in Python?',
+        options: ['dict = []', 'dict = ()', 'dict = {}', 'dict = <>'],
+        correct: 2
+      },
+      {
+        id: 'q8',
+        question: 'What is the output of: print(2 ** 3)?',
+        options: ['5', '6', '8', '9'],
+        correct: 2
+      },
+      {
+        id: 'q9',
+        question: 'Which method is used to add an element to the end of a list?',
+        options: ['add()', 'append()', 'insert()', 'extend()'],
+        correct: 1
+      },
+      {
+        id: 'q10',
+        question: 'What is a lambda function in Python?',
+        options: ['A named function', 'An anonymous function', 'A class method', 'A built-in function'],
+        correct: 1
+      }
+    ],
+    category: 'Programming',
+    xpReward: 150,
+    creditsReward: 200,
+    requiredForCompletion: true
+  },
+  {
+    id: 'quiz_java_complete',
+    title: 'Java Programming Complete Quiz',
+    bookId: 'book_java',
+    description: 'Complete this quiz after finishing the Java notes to earn credits!',
+    questions: [
+      {
+        id: 'q1',
+        question: 'Which of the following is the correct syntax to print in Java?',
+        options: ['print("Hello")', 'System.out.print("Hello")', 'console.log("Hello")', 'echo("Hello")'],
+        correct: 1
+      },
+      {
+        id: 'q2',
+        question: 'What is the size of int data type in Java?',
+        options: ['8 bits', '16 bits', '32 bits', '64 bits'],
+        correct: 2
+      },
+      {
+        id: 'q3',
+        question: 'Which keyword is used to inherit a class in Java?',
+        options: ['inherits', 'extends', 'implements', 'super'],
+        correct: 1
+      },
+      {
+        id: 'q4',
+        question: 'What is the default value of a boolean variable in Java?',
+        options: ['true', 'false', 'null', '0'],
+        correct: 1
+      },
+      {
+        id: 'q5',
+        question: 'Which of these is NOT a Java feature?',
+        options: ['Object-oriented', 'Platform-independent', 'Pointer arithmetic', 'Multithreading'],
+        correct: 2
+      },
+      {
+        id: 'q6',
+        question: 'What is the parent class of all classes in Java?',
+        options: ['System', 'Object', 'Class', 'Parent'],
+        correct: 1
+      },
+      {
+        id: 'q7',
+        question: 'Which method is the entry point of a Java program?',
+        options: ['start()', 'run()', 'main()', 'init()'],
+        correct: 2
+      },
+      {
+        id: 'q8',
+        question: 'What is the purpose of the "final" keyword in Java?',
+        options: ['To make a variable constant', 'To end a program', 'To finalize an object', 'To create a final method'],
+        correct: 0
+      },
+      {
+        id: 'q9',
+        question: 'Which of these is used to handle exceptions in Java?',
+        options: ['try-catch', 'if-else', 'switch-case', 'for-loop'],
+        correct: 0
+      },
+      {
+        id: 'q10',
+        question: 'What does JVM stand for?',
+        options: ['Java Variable Machine', 'Java Virtual Machine', 'Java Visual Machine', 'Java Version Manager'],
         correct: 1
       }
     ],
