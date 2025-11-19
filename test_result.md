@@ -355,12 +355,16 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Profile page opening correctly"
-    - "Website name changed to EduPulse"
-    - "C++ PDF displaying in Library"
-    - "Quiz appears after completing C++ book"
-    - "Credits awarded on 100% quiz score"
-    - "Credits accumulating properly"
+    - "Logo image displaying in Sidebar"
+    - "Python book with PDF displaying in Library"
+    - "Java book with PDF displaying in Library"
+    - "Python quiz accessible after completing Python book"
+    - "Java quiz accessible after completing Java book"
+    - "Theme toggle button working in top right corner"
+    - "Light theme colors applied correctly"
+    - "Dark theme colors applied correctly"
+    - "To-Do List page accessible from navigation"
+    - "To-Do List task creation, priority, timer, filtering working"
   stuck_tasks: []
   test_all: false
   test_priority: "sequential"
