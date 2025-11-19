@@ -201,7 +201,7 @@ const Library = () => {
       {filteredBooks.length === 0 && (
         <div className="text-center py-12">
           <BookOpen className="mx-auto text-gray-400 mb-4" size={48} />
-          <p className="text-gray-600">No books found matching your search</p>
+          <p className="text-gray-600 dark:text-gray-400">No books found matching your search</p>
         </div>
       )}
 
