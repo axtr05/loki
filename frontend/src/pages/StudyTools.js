@@ -160,17 +160,17 @@ const StudyTools = () => {
 
         {/* Pomodoro Timer */}
         <TabsContent value="pomodoro">
-          <div className="bg-white rounded-xl p-8 border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700">
             <div className="max-w-md mx-auto text-center space-y-8">
               <div>
-                <Clock className="mx-auto text-blue-600 mb-4" size={48} />
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <Clock className="mx-auto text-blue-600 dark:text-purple-500 mb-4" size={48} />
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   {isBreak ? 'Break Time' : 'Focus Time'}
                 </h2>
-                <p className="text-gray-600">Stay focused and productive</p>
+                <p className="text-gray-600 dark:text-gray-400">Stay focused and productive</p>
               </div>
 
-              <div className="text-7xl font-bold text-gray-900">
+              <div className="text-7xl font-bold text-gray-900 dark:text-white">
                 {formatTime(time)}
               </div>
 
