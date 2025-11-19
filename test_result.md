@@ -275,6 +275,78 @@ frontend:
         agent: "main"
         comment: "Changed C++ book creditsReward to 0 (no credits for just reading). Credits only awarded through quiz completion with awardCredits function"
 
+  - task: "Python and Java Books Integration"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/mock.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Added Python and Java books to mockEbooks with pdfUrl, hasQuiz, quizId properties. Both are free books with creditsReward: 0 (credits via quiz only)"
+
+  - task: "Python and Java Quizzes"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/mock.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Created quiz_python_complete and quiz_java_complete with 10 questions each. Both award 200 credits on 100% completion. Same quiz logic as C++ with celebration effects"
+
+  - task: "Theme System Implementation"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/contexts/ThemeContext.js, /app/frontend/src/index.css, /app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Created ThemeContext with light/dark mode support. Light theme: White base, blue/green accents. Dark theme: Black base, purple accents. Updated all components with dark mode classes"
+
+  - task: "Theme Toggle Button"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ThemeToggle.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Created ThemeToggle component with Sun/Moon icons in top right corner. Smooth transitions between themes with localStorage persistence"
+
+  - task: "To-Do List Feature"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/TodoList.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Created full TodoList page with dark purple input, task cards, priority system (High/Medium/Low), timer with countdown, filtering/sorting, search, smooth animations. Added route and navigation item"
+
+  - task: "Dark Mode Support Across Components"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Sidebar.js, /app/frontend/src/pages/Library.js, /app/frontend/src/pages/StudyTools.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Added dark mode classes (dark:) to all major components for consistent theming. Colors adjust based on theme selection"
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
