@@ -412,11 +412,11 @@ const StudyTools = () => {
                           {quizResults.filter(r => r).length}/{activeQuiz.questions.length} Questions Correct
                         </p>
                         {activeQuiz.requiredForCompletion && (
-                          <div className="bg-orange-100 border-2 border-orange-300 rounded-lg p-4 mt-4">
-                            <p className="text-orange-900 font-semibold mb-2">
+                          <div className="bg-orange-100 dark:bg-orange-900/50 border-2 border-orange-300 dark:border-orange-600 rounded-lg p-4 mt-4">
+                            <p className="text-orange-900 dark:text-orange-300 font-semibold mb-2">
                               ❌ You didn't get 10/10
                             </p>
-                            <p className="text-orange-800 text-sm">
+                            <p className="text-orange-800 dark:text-orange-400 text-sm">
                               You need to get ALL questions correct to earn {activeQuiz.creditsReward} credits.
                             </p>
                           </div>
