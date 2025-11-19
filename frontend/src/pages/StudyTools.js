@@ -406,9 +406,9 @@ const StudyTools = () => {
                   ) : (
                     <>
                       <XCircle className="mx-auto text-orange-500" size={64} />
-                      <h2 className="text-2xl font-bold text-gray-900">Quiz Completed</h2>
-                      <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-6">
-                        <p className="text-3xl font-bold text-gray-900 mb-4">
+                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Quiz Completed</h2>
+                      <div className="bg-orange-50 dark:bg-orange-900/30 border-2 border-orange-200 dark:border-orange-700 rounded-xl p-6">
+                        <p className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                           {quizResults.filter(r => r).length}/{activeQuiz.questions.length} Questions Correct
                         </p>
                         {activeQuiz.requiredForCompletion && (
