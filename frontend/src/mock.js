@@ -339,7 +339,7 @@ export const mockQuizzes = [
     ],
     category: 'Programming',
     xpReward: 150,
-    creditsReward: 200,
+    creditsReward: 100,
     requiredForCompletion: true
   },
   {
